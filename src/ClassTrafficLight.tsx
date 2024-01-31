@@ -1,11 +1,11 @@
 import { Component } from "react";
 
 interface State {
-  activeLight: string;
+  activeLight: 'red' | 'green' | 'yellow';
 }
 
-export class ClassTrafficLight extends Component<Props, State> {
-  constructor(props: Props) {
+export class ClassTrafficLight extends Component<Record<string, unknown>, State> {
+  constructor(props: Record<string, unknown>) {
     super(props);
     this.state = {
       activeLight: 'red',
@@ -26,7 +26,7 @@ export class ClassTrafficLight extends Component<Props, State> {
         nextLight = 'red';
         break;
     }
-    this.setState({ activeLight: nextLight });
+    this.setState({ activeLight: nextLight as 'red' | 'green' | 'yellow' });
   }
 
   render() {
